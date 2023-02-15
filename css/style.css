@@ -1,0 +1,185 @@
+#toast {
+    position: fixed;  /* Ra góc phải màng hình */
+    top: 32px;
+    right: 32px;
+}
+
+/* ==== Toast message Thông Báo ====== */ 
+    
+
+.toast {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 2px;
+    border-left: 4px solid; 
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
+    max-width: 600px;
+    min-width: 400px;
+    z-index: 9999;
+    /* khai biến và thời gian trược */
+    animation: slideInleft ease 0.3s, fadeOut 1s 3s forwards;  /* khai biến và thời gian trược */
+
+}
+/*  */
+@keyframes slideInleft {  /* hiệu ưng trược từ bên trái  */
+    from {
+        opacity: 0;
+        transform: translateX(calc(100% + 32px));
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut {  /* hiệu ưng mừ dần*/
+    to {
+        opacity: 0; /* hiệu ưng mừ dần*/
+    }
+}
+
+/*Đặt mầu cho */
+.toast--Success {
+    border-color: #47d864; 
+}
+.toast--Success .toast__icon {
+    color: #47d864;
+}
+
+.toast--Info {
+    border-color: #2f86eb;
+}
+.toast--Info .toast__icon {
+    color: #2f86eb
+}
+
+.toast--Warning {
+    border-color: #ffc021;
+}
+.toast--Warning .toast__icon {
+    color: #ffc021
+}
+
+
+.toast--Error {
+    border-color: #aa626e;
+}
+.toast--Error .toast__icon {
+    color: #aa626e
+}
+
+.toast + .toast {
+    margin-top: 24px;
+}
+.toast__icon {
+    font-size: 24px;
+}
+
+.toast__icon ,
+.toast__close {
+    padding: 0 16px;
+}
+
+.toast__body {
+   flex-grow: 1; /* Nếu nội đung ngắn vẫn chiếm được khoản không của mình */ 
+}
+
+.toast__title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+
+}
+
+.toast__msg {
+    font-size: 12px;
+    font-weight: 600;
+    color: #888;
+    margin-top: 4px;
+    line-height: 1.5;
+}
+
+
+.toast__close {
+    cursor: pointer;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.3) 
+}
+/* Hiệu ứng rê chuột*/
+.toast__close:hover{
+	opacity: 0.8;
+}
+/* Hiệu ứng rê chuột hình bàn tay*/
+.fa-times {
+    cursor: pointer;
+}
+
+#toast {
+    position: fixed;  /* Ra góc phải màng hình */
+    top: 32px;
+    right: 32px;
+}
+
+/* ======== Nút buttonn  ======== */
+
+.center{
+    text-align: center;  /* Canh giữa chữ  */
+    margin: 100px; /* Canh lề */
+    
+}
+/* Block */
+.btn_a{
+   text-decoration: none;  /* Xóa đường kẻ dưới chân của thẻ a */
+}
+
+.btn_div{
+	
+	display: inline-block;  /*Chỉnh lên chung hàng nhiều thẻ div*/
+}
+
+.btn{
+	display: inline-block;
+	text-decoration: none;  /* Xóa đường kẻ dưới chân của thẻ a */
+	background-color: transparent; /*Tạo trong suốt cho button*/
+	border: none; /* Bỏ viền sung quanh button  */
+	color: #fff;
+	padding: 15px 50px; /* Kính thước nút */
+	border-radius: 50px;  /* Bo 4 cạnh của nút */
+	margin-top: 20px; /* Cách  */
+	cursor: pointer; /* khi khê chuột vào hiện con trỏ chột thành bàn tay*/
+	min-width: 50px;
+	transition: opacity 0.2 ease; /* Thời gian chạy hiệu ứng opacity */
+}
+
+/* hiệu ứng rê chuột */
+.btn:hover{
+	opacity: 0.8;
+}
+
+.btn + .btn{  /* hàm điều kiện */
+	margin-left: 20px;
+}
+
+/* Trang thái nút không được bấm vào */
+.btn--disabled{  /* Trang thái nút không được bấm vào */
+	opacity: 0.2 !important; /* !important tắt hiệu ứng trỏ chuột  */
+	cursor: default; /* Tắt hiệu ứng rê chuột hiện bàn tay */
+}
+
+/*  */
+.btn-Dangnhap{
+    background-color: rgb(199, 211, 37);
+    padding: auto;
+
+}
+.btn-Dangky{
+    background-color: rgb(96, 190, 190);
+    padding: auto;
+
+}
+.btn-Ok{
+    background-color: rgb(129, 18, 18);
+    padding: auto;
+
+}

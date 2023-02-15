@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css">
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <title>Document</title>
+    </head>
+    <body>
+       
+        <div id="toast">  
+            <!-- Success-->
+            <div class="toast toast--Success" >
+                <div class="toast__icon">
+                    <i class="fa fa-check-circle"></i>
+                </div>
+                <div class="toast__body">
+                    <h3 class="toast__title">Success</h3>
+                    <p class="toast__msg">Tài khoản của bạn chưa đăng ký Bạn cần đăng ký trước khi đang nhập</p>
+                </div>
+                <div class="toast__close">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+        </div>  
+
+        <div class="center">
+
+            <div class="btn_button">
+                <button onclick="ShowSuccessToast();" class="btn btn-Dangnhap btn-success">Đăng nhập</button>
+                <button onclick="ShowInfoToast();" class="btn btn-Dangky btn-danger">Đăng ký</button>
+                <button class="btn btn-Ok">OK</button>
+            </div>
+
+        </div>
+        
+
+        <script>
+            // Toast function
+            function toast({
+                title = '',
+                message = '', 
+                type = '',
+                duration = 3000
+            }){
+                const main = document.getElementById('toast');
+                if (main) {
+                    const toast = document.createElement('div');
+                    // Auto remove toast
+                    const autoRemoveId = setTimeout(function() {
+                        main.removeChild(toast);
+                    }, duration + 1000);    
+                
+                    //Remove toast when clicked ===   /* Lenh khi kích vào nút close*/
+                    toast.onclick = function(e) {
+                       if (e.target.closest('.toast__close')) {
+                        main.removeChild(toast);
+                        clearTimeout(autoRemoveId);
+                       }
+                    }    
+
+
+                     const icons = {
+                        success: 'fas fa-check-circle',
+                        info: 'fas fa-info-circle',
+                        warning: 'fa-duotone fa-circle-exclamation',
+                        error: 'fa-solid fa-download',
+                     } ;
+                     const icon = icons[type];
+                     const delay =(duration /1000).toFixed(2);
+
+                    toast.classList.add('toast' , 'toast--${type}');
+                    toast.style.animation = 'animation: slideInleft ease 0.3s, fadeOut 1s ${delay}s forwards';
+
+                    toast.innerHTML = ' <div class="toast__icon"> <i class="${icon}"></i> </div> <div class="toast__body"> <h3 class="toast__title"> ${title} </h3>  <p class="toast__msg">${message}</p> </div> <div class="toast__close"> <i class="fas fa-times"></i> </div> ';
+                    main.appendChild(toast);
+
+                   
+                }   
+            }
+
+            
+            function ShowSuccessToast() {
+                toast({
+                title: 'Thành công !',
+                message: 'Tài khoản của bạn đã được đăng ký thành công !',
+                type: 'success',
+                duration: 3000
+            });
+
+            }
+
+            function ShowInfoToast() {
+                toast({
+                title: 'Thất Bại !',
+                message: 'Tài khoản của bạn chưa đăng ký Bạn cần đăng ký trước khi đang nhập',
+                type: 'info',
+                duration: 3000
+            });
+            }
+
+
+        </script>
+        
+    </body>
+</html>
