@@ -10,28 +10,14 @@
     </head>
     <body>
        
-        <div id="toast">  
-            <!-- Success-->
-            <div class="toast toast--Success" >
-                <div class="toast__icon">
-                    <i class="fa fa-check-circle"></i>
-                </div>
-                <div class="toast__body">
-                    <h3 class="toast__title">Success</h3>
-                    <p class="toast__msg">Tài khoản của bạn chưa đăng ký Bạn cần đăng ký trước khi đang nhập</p>
-                </div>
-                <div class="toast__close">
-                    <i class="fas fa-times"></i>
-                </div>
-            </div>
-        </div>  
+        <div id="toast"> </div>  
 
         <div class="center">
 
             <div class="btn_button">
                 <button onclick="ShowSuccessToast();" class="btn btn-Dangnhap btn-success">Đăng nhập</button>
                 <button onclick="ShowInfoToast();" class="btn btn-Dangky btn-danger">Đăng ký</button>
-                <button class="btn btn-Ok">OK</button>
+                <button onclick="ShowWarningToast();" class="btn btn-Ok">OK</button>
             </div>
 
         </div>
@@ -42,7 +28,7 @@
             function toast({
                 title = '',
                 message = '', 
-                type = '',
+                type = 'info',
                 duration = 3000
             }){
                 const main = document.getElementById('toast');
@@ -71,10 +57,16 @@
                      const icon = icons[type];
                      const delay =(duration /1000).toFixed(2);
 
-                    toast.classList.add('toast' , 'toast--${type}');
-                    toast.style.animation = 'animation: slideInleft ease 0.3s, fadeOut 1s ${delay}s forwards';
+                    toast.classList.add('toast', `toast--${type}` );
+                    toast.style.animation = `animation: slideInleft ease 0.3s, fadeOut 1s ${delay}s forwards`;
 
-                    toast.innerHTML = ' <div class="toast__icon"> <i class="${icon}"></i> </div> <div class="toast__body"> <h3 class="toast__title"> ${title} </h3>  <p class="toast__msg">${message}</p> </div> <div class="toast__close"> <i class="fas fa-times"></i> </div> ';
+                    toast.innerHTML = `
+                     <div class="toast__icon"> <i class="${icon}"></i> </div>
+                    <div class="toast__body"> <h3 class="toast__title"> ${title} </h3>  
+                        <p class="toast__msg">${message}</p> </div> 
+                    <div class="toast__close"> 
+                        <i class="fas fa-times"></i> 
+                        </div> `;
                     main.appendChild(toast);
 
                    
@@ -89,7 +81,6 @@
                 type: 'success',
                 duration: 3000
             });
-
             }
 
             function ShowInfoToast() {
@@ -97,6 +88,15 @@
                 title: 'Thất Bại !',
                 message: 'Tài khoản của bạn chưa đăng ký Bạn cần đăng ký trước khi đang nhập',
                 type: 'info',
+                duration: 3000
+            });
+            }
+            
+            function ShowWarningToast() {
+                toast({
+                title: 'Hoàn thành @',
+                message: 'Tài khoản của bạn đã hoàn thành nhiệm vụ',
+                type: 'error',
                 duration: 3000
             });
             }
