@@ -13,13 +13,13 @@
         <div id="toast"> </div>  
 
         <div class="center">
-
+        
             <div class="btn_button">
                 <button onclick="ShowSuccessToast();" class="btn btn-Dangnhap btn-success">Đăng nhập</button>
-                <button onclick="ShowInfoToast();" class="btn btn-Dangky btn-danger">Đăng ký</button>
+                   <button onclick="ShowInfoToast();" class="btn btn-Dangky btn-danger">Đăng ký</button>
                 <button onclick="ShowWarningToast();" class="btn btn-Ok">OK</button>
             </div>
-
+        
         </div>
         
 
@@ -32,6 +32,8 @@
                 duration = 3000
             }){
                 const main = document.getElementById('toast');
+
+                
                 if (main) {
                     const toast = document.createElement('div');
                     // Auto remove toast
